@@ -1,6 +1,10 @@
-controllers:
-    resource: ../src/Controller/
-    type: annotation
+#controllers:
+#    resource: ../src/Controller/
+#    type: annotation
+
+product_detail:
+    path: /product/{id}
+    controller: App\Product\Application\Controller\ProductController::detail
 
 kernel:
     resource: ../src/Kernel.php

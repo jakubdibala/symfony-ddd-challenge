@@ -11,8 +11,17 @@ services:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
 
-    # makes classes in src/ available to be used as services
-    # this creates a service per class whose id is the fully-qualified class name
+    app.product.repository.mysql:
+        class: App\Product\Infrastructure\Persistence\MySQL\ProductMySQLRepository
+
+    app.product.repository.elasticsearch:
+        class: App\Product\Infrastructure\Persistence\ElasticSearch\ProductElasticSearchRepository
+
+    App\Product\Command\GetProductDetailCommandHandler:
+        autowire: true
+
+    App\Product\Repository\IProductRepository: '@app.product.repository.mysql'
+
     App\:
         resource: '../src/'
         exclude:
